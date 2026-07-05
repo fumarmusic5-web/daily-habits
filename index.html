@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Director's Daily Reset</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&family=Homemade+Apple&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#050706;
+  color:#eee;
+  font-family:Inter,sans-serif;
+}
+
+.hero{
+  min-height:330px;
+  background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.85)),
+    url("take5.png") center/cover no-repeat;
+  display:flex;
+  align-items:flex-end;
+  padding:24px;
+}
+
+.hero-box{
+  width:100%;
+  border:1px solid rgba(214,165,67,.35);
+  background:rgba(5,8,7,.72);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:26px;
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:24px;
+  align-items:center;
+}
+
+.brand{
+  color:#78a95f;
+  letter-spacing:7px;
+  font-size:13px;
+}
+
+h1{
+  font-family:Oswald;
+  font-size:62px;
+  letter-spacing:3px;
+}
+
+.script{
+  font-family:"Homemade Apple";
+  color:#d7aa45;
+  font-size:34px;
+  margin-top:-10px;
+}
+
+.tagline{
+  letter-spacing:5px;
+  font-size:13px;
+  margin-top:10px;
+}
+
+.score{
+  border:1px solid rgba(214,165,67,.35);
+  border-radius:18px;
+  padding:20px;
+  background:#0b1110;
+}
+
+.score h3{
+  color:#78a95f;
+  font-family:Oswald;
+  letter-spacing:2px;
+}
+
+.percent{
+  font-family:Oswald;
+  font-size:58px;
+  color:#d7aa45;
+}
+
+.bar{
+  height:14px;
+  background:#222;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#78a95f,#d7aa45);
+}
+
+.count{
+  margin-top:12px;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.wrap{
+  padding:22px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.card{
+  border:1px solid rgba(214,165,67,.28);
+  background:#0b1110;
+  border-radius:18px;
+  padding:18px;
+  min-height:330px;
+}
+
+.card h3{
+  font-family:Oswald;
+  color:#78a95f;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.item span{
+  flex:1;
+  outline:none;
+}
+
+input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  accent-color:#78a95f;
+}
+
+.progress-text{
+  color:#d7aa45;
+  margin-top:14px;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.notes{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:1fr 310px;
+  gap:14px;
+}
+
+textarea{
+  width:100%;
+  min-height:130px;
+  background:#080d0c;
+  color:#eee;
+  border:1px solid rgba(214,165,67,.25);
+  border-radius:12px;
+  padding:15px;
+  resize:vertical;
+  font-family:Inter;
+  outline:none;
+}
+
+.quote{
+  border:1px solid rgba(214,165,67,.28);
+  border-radius:18px;
+  padding:22px;
+  color:#eee;
+  background:#0b1110;
+  line-height:1.7;
+  letter-spacing:2px;
+}
+
+.quote span{
+  color:#78a95f;
+}
+
+.footer{
+  text-align:center;
+  margin-top:18px;
+  color:#78a95f;
+  letter-spacing:8px;
+}
+
+@media(max-width:1000px){
+  .hero-box,.notes{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  h1{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-box">
+    <div>
+      <div class="brand">FUMAR FILM PRODUCTION</div>
+      <h1>DIRECTOR'S</h1>
+      <div class="script">Daily Reset</div>
+      <div class="tagline">DISCIPLINE TODAY. FREEDOM TOMORROW.</div>
+    </div>
+
+    <div class="score">
+      <h3>DAILY COMPLETION</h3>
+      <div class="percent" id="percent">0%</div>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+      <div class="count" id="count">0 / 0 HABITS COMPLETED</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<div class="grid">
+
+  <div class="card">
+    <h3>💧 HEALTH</h3>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Drink 100 oz Water</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Take Vitamins</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Eat 3 Balanced Meals</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">30-Minute Workout</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Stretch / Mobility</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Get 7-8 Hours Sleep</span></div>
+    <div class="progress-text section-score"></div>
+  </div>
+
+  <div class="card">
+    <h3>🎥 CREATIVE</h3>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Film Something</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Edit for 1 Hour</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Learn Editing Technique</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Organize Footage</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Charge Batteries</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Clean Camera Gear</span></div>
+    <div class="progress-text section-score"></div>
+  </div>
+
+  <div class="card">
+    <h3>💼 BUSINESS</h3>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Reply to Clients</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Post on Social Media</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Update Portfolio</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Send Invoice / Follow-up</span></div>
+    <div class="progress-text section-score"></div>
+  </div>
+
+  <div class="card">
+    <h3>🧠 MINDSET</h3>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Pray / Devotional</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Read 10 Pages</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">Journal One Thought</span></div>
+    <div class="item"><input type="checkbox"><span contenteditable="true">No Procrastination</span></div>
+    <div class="progress-text section-score"></div>
+  </div>
+
+</div>
+
+<div class="notes">
+  <div class="card">
+    <h3>🎬 DIRECTOR'S NOTES</h3>
+    <textarea id="notes" placeholder="Write thoughts, goals, ideas, or reminders..."></textarea>
+  </div>
+
+  <div class="quote">
+    “You don’t just make movies. You build legacy.”
+    <br><br>
+    <span>- Shane</span>
+  </div>
+</div>
+
+<div class="footer">FOCUS • CREATE • INSPIRE</div>
+
+</div>
+
+<script>
+const storageKey = "directorsDailyResetTake5";
+
+function save(){
+  const data = {
+    checks:[...document.querySelectorAll('input[type="checkbox"]')].map(c=>c.checked),
+    labels:[...document.querySelectorAll('.item span')].map(s=>s.innerText),
+    notes:document.getElementById("notes").value
+  };
+  localStorage.setItem(storageKey, JSON.stringify(data));
+}
+
+function load(){
+  const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+
+  if(saved.checks){
+    document.querySelectorAll('input[type="checkbox"]').forEach((c,i)=>{
+      c.checked = saved.checks[i] || false;
+    });
+  }
+
+  if(saved.labels){
+    document.querySelectorAll('.item span').forEach((s,i)=>{
+      s.innerText = saved.labels[i] || s.innerText;
+    });
+  }
+
+  if(saved.notes){
+    document.getElementById("notes").value = saved.notes;
+  }
+}
+
+function updateProgress(){
+  const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+  const done = boxes.filter(b=>b.checked).length;
+  const total = boxes.length;
+  const percent = total ? Math.round((done/total)*100) : 0;
+
+  document.getElementById("percent").innerText = percent + "%";
+  document.getElementById("fill").style.width = percent + "%";
+  document.getElementById("count").innerText = `${done} / ${total} HABITS COMPLETED`;
+
+  document.querySelectorAll(".card").forEach(card=>{
+    const cardBoxes = [...card.querySelectorAll('input[type="checkbox"]')];
+    const score = card.querySelector(".section-score");
+    if(cardBoxes.length && score){
+      const cardDone = cardBoxes.filter(b=>b.checked).length;
+      score.innerText = `PROGRESS ${cardDone} / ${cardBoxes.length}`;
+    }
+  });
+
+  save();
+}
+
+load();
+updateProgress();
+
+document.querySelectorAll('input, textarea, .item span').forEach(el=>{
+  el.addEventListener("input", updateProgress);
+  el.addEventListener("change", updateProgress);
+});
+</script>
+
+</body>
+</html>
